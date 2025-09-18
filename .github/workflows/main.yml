@@ -25,7 +25,7 @@ jobs:
 
       - name: Run script
         run: python update_price.py
-
+        
       - name: Commit and push HTML
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,4 +35,3 @@ jobs:
           git add index.html
           git commit -m "Update USD price" || echo "No changes to commit"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
-
