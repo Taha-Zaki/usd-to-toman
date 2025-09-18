@@ -62,7 +62,7 @@ usd-to-toman/
 ├── requirements.txt      # پیش‌نیازهای پایتون
 └── .github/
     └── workflows/
-        └── update.yml   # اکشن GitHub
+        └── main.yml   # اکشن GitHub
 ```
 
 ---
@@ -88,6 +88,6 @@ usd-to-toman/
 
 ## ⚡ نکات حرفه‌ای
 
-* برای تغییر زمان آپدیت، فایل اکشن `.github/workflows/update.yml` را ویرایش کنید
+* برای تغییر زمان آپدیت، فایل اکشن `.github/workflows/main.yml` را ویرایش کنید
 * می‌توانید استایل و رنگ‌ها را در `update_price.py` تغییر دهید
 * پروژه کاملاً رایگان و متن‌باز است
