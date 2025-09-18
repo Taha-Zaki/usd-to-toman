@@ -1,6 +1,6 @@
 # 💵 USD to Toman Live Dashboard
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Taha-Zaki/usd-to-toman/update.yml?branch=main\&label=Build\&logo=github)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Taha-Zaki/usd-to-toman/update.yml?branch=main&label=Build&logo=github)
 ![GitHub Pages](https://img.shields.io/github/deployments/Taha-Zaki/usd-to-toman/github-pages?logo=github)
 
 یک صفحه‌ی ساده، زیبا و **ریسپانسیو** که قیمت دلار به تومان را به‌صورت آنلاین نمایش می‌دهد. این پروژه از **Python + GitHub Actions + GitHub Pages** استفاده می‌کند و هر ۳۰ دقیقه قیمت را به‌روزرسانی می‌کند.
