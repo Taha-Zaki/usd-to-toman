@@ -21,15 +21,16 @@ html_content = f"""
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>قیمت دلار</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/iranyekan@v5.0.0/dist/font-face.css" rel="stylesheet" type="text/css"/>
 <style>
 body {{
+    margin: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
     background: linear-gradient(135deg, #1e3a8a, #0f172a);
     font-family: 'IRANYekan', sans-serif;
     color: #00e6a8;
@@ -38,20 +39,22 @@ body {{
 .container {{
     text-align: center;
     background: rgba(255, 255, 255, 0.05);
-    padding: 60px 100px;
-    border-radius: 25px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    padding: 5vw;
+    border-radius: 5vw;
+    box-shadow: 0 1vw 4vw rgba(0,0,0,0.4);
+    max-width: 90vw;
 }}
 
 h1 {{
-    font-size: 4rem;
+    font-size: clamp(2rem, 8vw, 5rem);
     margin: 0;
+    word-break: break-word;
 }}
 
 p {{
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     color: #a0f0c0;
-    margin-top: 10px;
+    margin-top: 1rem;
 }}
 </style>
 </head>
