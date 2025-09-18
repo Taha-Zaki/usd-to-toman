@@ -22,16 +22,44 @@ html_content = f"""
 <head>
 <meta charset="UTF-8">
 <title>قیمت دلار</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/iranyekan@v5.0.0/dist/font-face.css" rel="stylesheet" type="text/css"/>
 <style>
 body {{
-    display: flex; justify-content: center; align-items: center;
-    height: 100vh; background: #0f172a; color: #00e6a8;
-    font-family: sans-serif; font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #1e3a8a, #0f172a);
+    font-family: 'IRANYekan', sans-serif;
+    color: #00e6a8;
+}}
+
+.container {{
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 60px 100px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}}
+
+h1 {{
+    font-size: 4rem;
+    margin: 0;
+}}
+
+p {{
+    font-size: 1.5rem;
+    color: #a0f0c0;
+    margin-top: 10px;
 }}
 </style>
 </head>
 <body>
-قیمت دلار: {price_toman} تومان
+<div class="container">
+    <h1>{price_toman:,} تومان</h1>
+    <p>قیمت دلار امروز</p>
+</div>
 </body>
 </html>
 """
