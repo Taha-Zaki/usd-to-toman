@@ -1,0 +1,35 @@
+name: Update USD Price
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # هر ۳۰ دقیقه
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run script
+        run: python update_price.py
+
+      - name: Commit and push HTML
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "actions@github.com"
+          git add index.html
+          git commit -m "Update USD price"
+          git push
