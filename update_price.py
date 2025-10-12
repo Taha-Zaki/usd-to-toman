@@ -1,5 +1,8 @@
+# update_price.py
 import requests
 from bs4 import BeautifulSoup
+import json
+from datetime import datetime
 
 def fetch_usd_irr():
     url = "https://www.tgju.org/dollar-chart"
@@ -8,64 +11,62 @@ def fetch_usd_irr():
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
     td = soup.find("td", class_="nf")
+    if td is None:
+        raise RuntimeError("Couldn't find price element on page")
     text = td.get_text(strip=True)
     digits = str.maketrans("۰۱۲۳۴۵۶۷۸۹", "0123456789")
-    number = int(''.join(filter(str.isdigit, text.translate(digits))))
+    translated = text.translate(digits)
+    numeric = ''.join(filter(str.isdigit, translated))
+    if not numeric:
+        raise RuntimeError(f"No digits found in extracted text: {text!r}")
+    number = int(numeric)
     return number
 
-price_irr = fetch_usd_irr()
-price_toman = price_irr // 10
-
-html_content = f"""
-<!DOCTYPE html>
+def build_html(price_toman):
+    return f"""<!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>قیمت دلار</title>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/iranyekan@v5.0.0/dist/font-face.css" rel="stylesheet" type="text/css"/>
 <style>
-body {{
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #1e3a8a, #0f172a);
-    font-family: 'IRANYekan', sans-serif;
-    color: #00e6a8;
-}}
-
-.container {{
-    text-align: center;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 5vw;
-    border-radius: 5vw;
-    box-shadow: 0 1vw 4vw rgba(0,0,0,0.4);
-    max-width: 90vw;
-}}
-
-h1 {{
-    font-size: clamp(2rem, 8vw, 5rem);
-    margin: 0;
-    word-break: break-word;
-}}
-
-p {{
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    color: #a0f0c0;
-    margin-top: 1rem;
-}}
+body{{font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;background:#0f172a;color:#00e6a8}}
+.container{{text-align:center}}
+h1{{font-size:3rem;margin:0}}
+p{{opacity:.8}}
 </style>
 </head>
 <body>
-<div class="container">
+  <div class="container">
     <h1>{price_toman:,} تومان</h1>
-    <p>قیمت دلار امروز</p>
-</div>
+    <p>قیمت دلار لحظه‌ای</p>
+  </div>
 </body>
-</html>
-"""
+</html>"""
 
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html_content)
+def main():
+    price_irr = fetch_usd_irr()
+    price_toman = price_irr // 10
+    now_iso = datetime.utcnow().isoformat() + "Z"
+
+    # تولید HTML
+    html = build_html(price_toman)
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(html)
+
+    # تولید JSON
+    data = {
+        "usd_price_irr": price_irr,
+        "usd_price_toman": price_toman,
+        "currency": "IRR",
+        "source": "tgju.org",
+        "fetched_at_utc": now_iso,
+        "status": "success"
+    }
+    with open("data.json", "w", encoding="utf-8") as jf:
+        json.dump(data, jf, ensure_ascii=False, indent=2)
+
+    print("Updated index.html and data.json")
+
+if __name__ == "__main__":
+    main()
