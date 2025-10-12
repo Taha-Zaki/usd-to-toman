@@ -2,7 +2,7 @@ name: Update USD Price
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # هر ۳۰ دقیقه
+    - cron: '*/1 * * * *'  # هر ۳۰ دقیقه
   push:
     branches:
       - main
