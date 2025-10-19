@@ -91,3 +91,8 @@ usd-to-toman/
 * برای تغییر زمان آپدیت، فایل اکشن `.github/workflows/main.yml` را ویرایش کنید
 * می‌توانید استایل و رنگ‌ها را در `update_price.py` تغییر دهید
 * پروژه کاملاً رایگان و متن‌باز است
+
+
+
+
+https://taha-zaki.github.io/usd-to-toman/data.json
