@@ -30,7 +30,7 @@ def build_html(price_toman):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>قیمت دلار</title>
 <style>
-body{{font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;background:#0f172a;color:#00e6a8}}
+body{{font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;background:#191919;color:#00e6a8}}
 .container{{text-align:center}}
 h1{{font-size:3rem;margin:0}}
 p{{opacity:.8}}
