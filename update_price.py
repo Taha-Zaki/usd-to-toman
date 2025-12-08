@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 
 def fetch_usd_irr():
-    url = "https://www.tgju.org/dollar-chart"
+    url = "https://www.tgju.org/%D9%82%DB%8C%D9%85%D8%AA-%D8%AF%D9%84%D8%A7%D8%B1"
     headers = {"User-Agent": "Mozilla/5.0"}
     r = requests.get(url, headers=headers, timeout=15)
     r.raise_for_status()
