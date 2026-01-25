@@ -1,8 +1,8 @@
 {
-  "usd_price_irr": 1419400,
-  "usd_price_toman": 141940,
+  "usd_price_irr": 1419100,
+  "usd_price_toman": 141910,
   "currency": "IRR",
   "source": "tgju.org",
-  "fetched_at_utc": "2026-01-25T08:52:03.109717Z",
+  "fetched_at_utc": "2026-01-25T09:14:18.038313Z",
   "status": "success"
 }
